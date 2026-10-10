@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile containing level, coins, unlocked items, and companion pet data",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique identifier matching the user's auth UID",
+          "maxLength": 128
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the child/cadet",
+          "maxLength": 64
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Selected avatar identifier",
+          "maxLength": 64
+        },
+        "level": {
+          "type": "number",
+          "description": "Player level from 1 upwards"
+        },
+        "xp": {
+          "type": "number",
+          "description": "Player experience points"
+        },
+        "coins": {
+          "type": "number",
+          "description": "Star coins collected"
+        },
+        "crystals": {
+          "type": "number",
+          "description": "Rare cosmic crystals collected"
+        },
+        "equippedPet": {
+          "type": "string",
+          "description": "Current active companion ID",
+          "maxLength": 64
+        },
+        "unlockedAvatars": {
+          "type": "array",
+          "description": "List of unlocked avatar IDs"
+        },
+        "unlockedPets": {
+          "type": "array",
+          "description": "List of unlocked pet IDs"
+        },
+        "unlockedGear": {
+          "type": "array",
+          "description": "List of unlocked equipment IDs"
+        },
+        "achievements": {
+          "type": "array",
+          "description": "List of unlocked achievement keys"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when profile was last saved"
+        }
+      },
+      "required": ["uid", "displayName", "level", "xp", "coins"]
+    },
+    "GameScore": {
+      "title": "GameScore",
+      "description": "High score entry for galactic leaderboards",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "User UID who achieved the score",
+          "maxLength": 128
+        },
+        "playerName": {
+          "type": "string",
+          "description": "Player display name",
+          "maxLength": 64
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Avatar ID used",
+          "maxLength": 64
+        },
+        "gameMode": {
+          "type": "string",
+          "description": "Mini-game identifier (interceptor, math, trivia, memory)",
+          "maxLength": 32
+        },
+        "score": {
+          "type": "number",
+          "description": "Numerical score achieved"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of record creation"
+        }
+      },
+      "required": ["userId", "playerName", "gameMode", "score"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User game progress and inventory data"
+    },
+    "/scores/{scoreId}": {
+      "schema": "GameScore",
+      "description": "Galactic leaderboard entries"
+    }
+  }
+}

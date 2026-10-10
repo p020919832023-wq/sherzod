@@ -1,0 +1,8 @@
+{
+  "name": "CosmoHeroes: Квест Вселенной",
+  "description": "Увлекательная приключенческая игра для детей 10 лет с квестами на логику, скорость, космо-викторинами, прокачкой героя и состязаниями.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
